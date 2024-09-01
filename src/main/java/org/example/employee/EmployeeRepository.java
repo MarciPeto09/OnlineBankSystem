@@ -1,4 +1,4 @@
-package employee;
+package org.example.employee;
 
 
 import org.hibernate.*;

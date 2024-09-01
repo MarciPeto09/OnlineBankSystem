@@ -1,10 +1,10 @@
-package employee;
+package org.example.employee;
 
 import java.util.List;
 
 public class EmployeeService {
 
-    private  EmployeeRepository employeeRepository;
+    private EmployeeRepository employeeRepository;
 
 
 
