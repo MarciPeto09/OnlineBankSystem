@@ -1,10 +1,20 @@
 package org.example.branch;
 
+import org.example.branch.BranchRepository;
+import org.hibernate.SessionFactory;
+
 import java.util.List;
 
 public class BranchService {
 
     private BranchRepository branchRepository;
+    private SessionFactory sessionFactory;
+
+    public BranchService(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+        branchRepository = new BranchRepository(sessionFactory);
+    }
+
 
     public void add(BranchEntity branch){
         branchRepository.add(branch);

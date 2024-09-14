@@ -11,6 +11,12 @@ import java.util.List;
 
 public class BranchRepository implements InterfaceRepo<BranchEntity> {
     private SessionFactory sessionFactory;
+
+
+    public BranchRepository(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     @Override
     public void add(BranchEntity branch) {
         Transaction transaction = null;

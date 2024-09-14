@@ -12,11 +12,15 @@ import java.util.List;
 public class AccountRepository implements InterfaceRepo<AccountEntity> {
     private SessionFactory sessionFactory;
 
+    public AccountRepository(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     @Override
     public void add(AccountEntity account) {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
-            transaction = session.getTransaction();
+            transaction = session.beginTransaction();
             session.save(account);
             transaction.commit();
         } catch (Exception e) {
