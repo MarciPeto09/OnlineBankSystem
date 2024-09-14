@@ -18,7 +18,7 @@ public class ClientsRepository implements InterfaceRepo<ClientsEntity> {
     public void add (ClientsEntity clients) {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
-            transaction = session.getTransaction();
+            transaction = session.beginTransaction();
             session.save(clients);
             transaction.commit();
         } catch (Exception e) {
@@ -30,7 +30,7 @@ public class ClientsRepository implements InterfaceRepo<ClientsEntity> {
     public void remove (int id) {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
-            transaction = session.getTransaction();
+            transaction = session.beginTransaction();
             EmployeeEntity employee = session.createQuery("Select a From EmployeeEntity where a.id = :id", EmployeeEntity.class)
                     .setParameter("id", id)
                     .getSingleResult();

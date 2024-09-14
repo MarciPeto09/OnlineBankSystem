@@ -19,7 +19,7 @@ public class TransactionsRepository implements InterfaceRepo<TransactionsEntity>
     public void add (TransactionsEntity clients) {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
-            transaction = session.getTransaction();
+            transaction = session.beginTransaction();
             session.save(clients);
             transaction.commit();
         } catch (Exception e) {

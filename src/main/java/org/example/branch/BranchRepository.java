@@ -21,7 +21,7 @@ public class BranchRepository implements InterfaceRepo<BranchEntity> {
     public void add(BranchEntity branch) {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
-            transaction = session.getTransaction();
+            transaction = session.beginTransaction();
             session.save(branch);
             transaction.commit();
         } catch (Exception e) {
@@ -33,7 +33,7 @@ public class BranchRepository implements InterfaceRepo<BranchEntity> {
     public void remove(int id) {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
-            transaction = session.getTransaction();
+            transaction = session.beginTransaction();
             BranchEntity branch = session.createQuery("Select a From BranchEntity where a.id = :id", BranchEntity.class)
                     .setParameter("id", id)
                     .getSingleResult();

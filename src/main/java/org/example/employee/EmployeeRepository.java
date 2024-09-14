@@ -16,7 +16,7 @@ public class EmployeeRepository implements InterfaceRepo<EmployeeEntity> {
     public void add(EmployeeEntity employee) {
         Transaction transaction = null;
         try(Session session = sessionFactory.openSession()){
-            transaction = session.getTransaction();
+            transaction = session.beginTransaction();
             session.save(employee);
             transaction.commit();
         }catch (Exception e){
@@ -28,7 +28,7 @@ public class EmployeeRepository implements InterfaceRepo<EmployeeEntity> {
     public void remove(int id) {
         Transaction transaction = null;
         try(Session session = sessionFactory.openSession()){
-            transaction = session.getTransaction();
+            transaction = session.beginTransaction();
             EmployeeEntity employee = session.createQuery("Select a From EmployeeEntity where a.id = :id",EmployeeEntity.class)
                     .setParameter("id", id)
                     .getSingleResult();

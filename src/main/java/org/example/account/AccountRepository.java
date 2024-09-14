@@ -32,7 +32,7 @@ public class AccountRepository implements InterfaceRepo<AccountEntity> {
     public void remove(int id) {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
-            transaction = session.getTransaction();
+            transaction = session.beginTransaction();
             AccountEntity account = session.createQuery("Select a From AccountEntity where a.id = :id", AccountEntity.class)
                     .setParameter("id", id)
                     .getSingleResult();
