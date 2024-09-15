@@ -8,6 +8,9 @@ import java.util.List;
 public class TransactionsService {
     private TransactionsRepository TransactionsRepository;
 
+    public TransactionsService(org.example.transactions.TransactionsRepository transactionsRepository) {
+        TransactionsRepository = transactionsRepository;
+    }
 
     public void add (TransactionsEntity employee) {
         TransactionsRepository.add(employee);

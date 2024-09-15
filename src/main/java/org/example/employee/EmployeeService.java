@@ -6,7 +6,9 @@ public class EmployeeService {
 
     private EmployeeRepository employeeRepository;
 
-
+    public EmployeeService(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
 
     public void add(EmployeeEntity employee){
         employeeRepository.add(employee);

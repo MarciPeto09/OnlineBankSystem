@@ -15,6 +15,10 @@ public class TransactionsRepository implements InterfaceRepo<TransactionsEntity>
 
     private SessionFactory sessionFactory;
 
+    public TransactionsRepository(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     @Override
     public void add (TransactionsEntity clients) {
         Transaction transaction = null;

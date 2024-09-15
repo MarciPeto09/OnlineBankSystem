@@ -12,6 +12,10 @@ public class EmployeeRepository implements InterfaceRepo<EmployeeEntity> {
 
     private SessionFactory sessionFactory;
 
+    public EmployeeRepository(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     @Override
     public void add(EmployeeEntity employee) {
         Transaction transaction = null;

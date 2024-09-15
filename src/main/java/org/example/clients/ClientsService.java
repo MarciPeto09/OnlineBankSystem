@@ -1,11 +1,16 @@
 package org.example.clients;
 
 
+import org.hibernate.SessionFactory;
+
 import java.util.List;
 
 public class ClientsService {
     private ClientsRepository clientsRepository;
 
+    public ClientsService(ClientsRepository clientsRepository) {
+        this.clientsRepository = clientsRepository;
+    }
 
     public void add (ClientsEntity employee) {
         clientsRepository.add(employee);
